@@ -3,6 +3,8 @@ name = "okf-rag-engine"
 version = "0.2.1"
 description = "Hybrid RAG engine built on Google Cloud's Open Knowledge Format (OKF v0.2)"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "chromadb>=0.5.5",

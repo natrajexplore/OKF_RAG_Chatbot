@@ -254,6 +254,17 @@ step-by-step exploitation content is included.
 
 ---
 
+## 📄 License
+
+Released under the **[MIT License](LICENSE)** — © 2026 natrajexplore.
+
+The license covers the original source code and the OKF knowledge base in this repository. It does
+**not** cover the third-party material the project cites: *Hacking APIs* (© Corey J. Ball / No Starch
+Press, not redistributed here) and the OWASP API Security Top 10 (© the OWASP Foundation). See the
+third-party notice at the bottom of [`LICENSE`](LICENSE).
+
+---
+
 ## 🤝 Working with Claude Code
 
 Open the folder and run `claude`. `CLAUDE.md` gives it the OKF v0.2 rules, so prompts like
