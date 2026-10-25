@@ -1,0 +1,28 @@
+[project]
+name = "okf-rag-engine"
+version = "0.2.1"
+description = "Hybrid RAG engine built on Google Cloud's Open Knowledge Format (OKF v0.2)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=0.5.5",
+    "fastapi>=0.115.0",
+    "google-genai>=1.0.0",
+    "networkx>=3.3",
+    "openai>=1.40.0",
+    "python-dotenv>=1.0.1",
+    "python-frontmatter>=1.1.0",
+    "pyyaml>=6.0.2",
+    "streamlit>=1.38.0",
+    "uvicorn>=0.30.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "httpx>=0.27",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

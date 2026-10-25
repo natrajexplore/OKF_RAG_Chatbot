@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.chroma/
+.streamlit/secrets.toml
+
+# Local source material / build artifacts (not redistributed)
+Corey_J._Ball_Hacking_APIs.pdf
+okf-rag-engine.zip

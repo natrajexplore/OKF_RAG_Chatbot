@@ -1,0 +1,23 @@
+name: OKF bundle validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: uv sync
+      - name: Validate OKF v0.2 bundle (errors fail the build)
+        run: uv run python -m src.validator okf_bundle
+      - name: Report warnings (stale / unverified / broken links)
+        run: uv run python -m src.validator okf_bundle --strict || echo "::warning::OKF bundle has warnings — see log above"
+      - name: Tests
+        run: uv run pytest -q

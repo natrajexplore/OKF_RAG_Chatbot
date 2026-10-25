@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sentinel — Secure API Platform</title>
+<meta name="description" content="A Cisco-style demo UI for an OKF v0.2 hybrid-RAG API-security assistant and secure-request demo lab. Not affiliated with Cisco." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+
+<!-- utility bar -->
+<div class="utilbar">
+  <div class="wrap util-inner">
+    <span class="util-left">Secure API Platform · OKF v0.2 hybrid RAG</span>
+    <nav class="util-right">
+      <a href="#assistant">How it works</a>
+      <a href="#demo">Partners</a>
+      <a href="#assistant" class="util-ic">◎ Log in</a>
+      <span class="util-ic">🌐 EN US</span>
+    </nav>
+  </div>
+</div>
+
+<!-- header -->
+<header class="masthead">
+  <div class="wrap mast-inner">
+    <a class="brand" href="/" aria-label="Sentinel home">
+      <span class="brand-mark" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </span>
+      <span class="brand-name">SENTINEL</span>
+    </a>
+    <nav class="mainnav" aria-label="Primary">
+      <a href="#tiles">Products and Services</a>
+      <a href="#demo">Solutions</a>
+      <a href="#assistant">Support</a>
+      <a href="#graph">Learn</a>
+      <a href="#assistant">Why Sentinel</a>
+    </nav>
+    <div class="mast-actions">
+      <a href="#demo" class="btn btn-outline">Trials and demos</a>
+      <button class="iconbtn" id="searchBtn" aria-label="Search">⌕</button>
+    </div>
+  </div>
+</header>
+
+<!-- announcement -->
+<div class="announce">
+  <div class="wrap">Evolve your approach to API defense in the AI era.
+    <a href="#demo">See the demo lab ›</a></div>
+</div>
+
+<!-- hero -->
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">OWASP API Top 10 · Grounded in <em>Hacking APIs</em></p>
+    <h1>The secure foundation<br />for APIs in the AI era</h1>
+    <p class="lede">Ask a local AI assistant how to keep your API requests secure — every
+      answer cites the exact policy, control and provenance it came from — then watch each
+      weakness and its fix run live in the demo lab.</p>
+    <div class="hero-cta">
+      <a href="#assistant" class="btn btn-primary">Ask the assistant</a>
+      <a href="#demo" class="btn btn-ghost">Open the demo lab ›</a>
+    </div>
+    <p class="hero-note" id="healthNote">Connecting to local engine…</p>
+  </div>
+</section>
+
+<!-- trust strip -->
+<section class="trust">
+  <div class="wrap trust-inner">
+    <span>Grounded in a verifiable knowledge base</span>
+    <strong id="trustCount">— concepts</strong>
+    <strong id="trustLinks">— links</strong>
+    <strong>13 weakness classes</strong>
+    <strong>8 controls</strong>
+    <strong>100% local · no API keys</strong>
+  </div>
+</section>
+
+<!-- tiles -->
+<section id="tiles" class="tiles">
+  <div class="wrap">
+    <h2>Market-defining weaknesses — and the controls that stop them</h2>
+    <div class="tile-grid" id="tileGrid"><!-- filled by JS --></div>
+  </div>
+</section>
+
+<!-- assistant -->
+<section id="assistant" class="panel">
+  <div class="wrap">
+    <h2>API Security Assistant</h2>
+    <p class="sub">Hybrid retrieval: ChromaDB finds entry concepts, NetworkX follows the links
+      between them, and a local Ollama model answers with provenance.</p>
+    <div class="ask">
+      <textarea id="q" rows="3" placeholder="e.g. How do I stop one user from reading another user's account?">How do I keep API requests secure against BOLA and broken authentication?</textarea>
+      <div class="ask-controls">
+        <label>Entry concepts (k) <input type="number" id="topk" value="3" min="1" max="6" /></label>
+        <label>Link hops <input type="number" id="hops" value="1" min="0" max="3" /></label>
+        <button class="btn btn-primary" id="askBtn">Run hybrid retrieval</button>
+      </div>
+    </div>
+    <div id="answer" class="answer hidden"></div>
+  </div>
+</section>
+
+<!-- demo lab -->
+<section id="demo" class="panel panel-alt">
+  <div class="wrap">
+    <h2>Secure-request demo lab</h2>
+    <p class="sub">Each scenario runs twice — once the insecure way, once the secure way — on a
+      throwaway in-memory sandbox with fictional users. See exactly how to maintain the request
+      securely.</p>
+    <div class="scenario-tabs" id="scenarioTabs"></div>
+    <div class="demo-grid">
+      <div class="demo-controls">
+        <h3 id="scTitle">—</h3>
+        <p id="scBlurb" class="sub"></p>
+        <div id="scInputs" class="sc-inputs"></div>
+        <div class="mode-toggle">
+          <button class="mode mode-bad active" data-mode="vulnerable">Insecure</button>
+          <button class="mode mode-good" data-mode="secure">Secure</button>
+        </div>
+        <button class="btn btn-primary" id="runDemo">Send request</button>
+      </div>
+      <div class="demo-output">
+        <div class="io">
+          <div class="io-col"><h4>Request</h4><pre id="reqOut">—</pre></div>
+          <div class="io-col"><h4>Response</h4><pre id="resOut">—</pre></div>
+        </div>
+        <div id="verdict" class="verdict hidden"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- graph -->
+<section id="graph" class="panel">
+  <div class="wrap">
+    <h2>Concept knowledge graph</h2>
+    <p class="sub">Every concept is one whole OKF document. Links between them are deterministic
+      graph edges the retriever walks. Click any concept to ask the assistant about it.</p>
+    <div id="graphGroups" class="graph-groups"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>SENTINEL</strong> — Cisco-style demo UI built for an OKF v0.2 hybrid-RAG
+      API-security project. Independent educational demo; <em>not affiliated with or endorsed
+      by Cisco Systems, Inc.</em></p>
+    <p class="muted">Knowledge base summarised from <em>Hacking APIs</em> (Corey J. Ball,
+      No Starch Press) and the OWASP API Security Top 10. Answers generated locally with Ollama.</p>
+  </div>
+</footer>
+
+<!-- floating chatbot -->
+<button id="chatFab" class="chat-fab" aria-label="Open assistant">
+  <span class="fab-dot"></span> Hello, how can I help?
+</button>
+<div id="chatPanel" class="chat-panel hidden" role="dialog" aria-label="Sentinel assistant">
+  <div class="chat-head">
+    <span><span class="fab-dot"></span> Sentinel Assistant</span>
+    <button id="chatClose" aria-label="Close">✕</button>
+  </div>
+  <div id="chatLog" class="chat-log"></div>
+  <form id="chatForm" class="chat-input">
+    <input id="chatText" type="text" autocomplete="off" placeholder="Ask about API security…" />
+    <button class="btn btn-primary" type="submit">Send</button>
+  </form>
+</div>
+
+<script src="/assets/app.js"></script>
+</body>
+</html>
