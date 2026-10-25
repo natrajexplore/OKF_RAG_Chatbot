@@ -260,7 +260,7 @@ step-by-step exploitation content is included.
 
 ## 📄 License
 
-Released under the **[MIT License](LICENSE)** — © 2026 natrajexplore.
+Released under the **[MIT License](LICENSE)** — © 2026 Nataraj Angappan.
 
 The license covers the original source code and the OKF knowledge base in this repository. It does
 **not** cover the third-party material the project cites: *Hacking APIs* (© Corey J. Ball / No Starch
