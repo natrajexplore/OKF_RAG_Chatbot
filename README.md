@@ -23,6 +23,35 @@ a **Cisco-style web experience**, an interactive **secure-request demo lab**, an
 
 ---
 
+## 📸 Screenshots
+
+**Home — the secure-API hero, trust bar and floating chatbot**
+
+![Home / hero](docs/screenshots/01-hero.png)
+
+**Weakness catalog — the OWASP API Top 10, each linked to the assistant**
+
+![Weakness tiles](docs/screenshots/02-weaknesses.png)
+
+**API Security Assistant — a grounded, provenance-cited answer.** The answer names the exact
+control, its **trust tier** (HUMAN-REVIEWED) and **freshness**, with the **cited concepts** and the
+**deterministic graph-traversal path** shown alongside — generated locally by Ollama.
+
+![Assistant answer](docs/screenshots/03-assistant.png)
+
+**Secure-request demo lab — BOLA, the insecure run.** Signed in as `alice`, requesting account
+`5502` the insecure way returns **bob's** data — flagged *Exploited*, with the control that fixes it.
+Flip to *Secure* and the same request is blocked.
+
+![Demo lab — BOLA insecure](docs/screenshots/04-demo.png)
+
+**Concept knowledge graph — every concept grouped by type**, with the deprecated OWASP 2019
+standard clearly flagged.
+
+![Concept graph](docs/screenshots/05-graph.png)
+
+---
+
 ## 🏗️ Architecture
 
 ```
