@@ -5,6 +5,10 @@ A **hybrid Retrieval-Augmented Generation** application built on Google Cloud's
 a **Cisco-style web experience**, an interactive **secure-request demo lab**, and a
 **chatbot** that answers with provenance — all running **100% locally via Ollama, no API keys**.
 
+> **Stack at a glance** — Local models: **`nemotron-3-nano:4b`** (chat) · **`nomic-embed-text`**
+> (embeddings), no API keys. Knowledge base: **39 OKF concepts · 176 links** (13 weaknesses ·
+> 8 controls · 10 checklists). Retrieval: **ChromaDB semantic → NetworkX graph → trust/freshness gate**.
+
 > **Why it's different from a plain vector-RAG bot:** every OKF concept is a *whole document*
 > (never chunked across boundaries), retrieval follows **explicit links** between concepts like a
 > knowledge graph, and every answer is gated by **trust tier** and **freshness** so the assistant
@@ -52,7 +56,7 @@ standard clearly flagged.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture — ChromaDB semantic → NetworkX graph → trust/freshness gate
 
 ```
                    ┌───────────────────────────────────────────────────────────┐
@@ -73,7 +77,7 @@ standard clearly flagged.
 
 ---
 
-## 🚀 Quick start (local, no API keys)
+## 🚀 Quick start — 100% local on Ollama (`nemotron-3-nano:4b` + `nomic-embed-text`)
 
 ```bash
 # 0. clone
@@ -134,7 +138,7 @@ the answer cites `[/controls/object_level_authorization.md]` with its trust tier
 
 ---
 
-## 🧪 Secure-request demo lab
+## 🧪 Secure-request demo lab — 5 OWASP scenarios, insecure vs. secured
 
 Each scenario runs against an **in-memory sandbox** and shows the request/response **with the
 weakness present** and then **with the control applied** — so you can see exactly what changes.
@@ -149,7 +153,7 @@ weakness present** and then **with the control applied** — so you can see exac
 
 ---
 
-## 📚 API-security knowledge base
+## 📚 API-security knowledge base — 39 OKF concepts (13 weaknesses · 8 controls · 10 checklists)
 
 `okf_bundle/` holds a defensive knowledge base summarised from *Hacking APIs* (Corey J. Ball,
 No Starch Press) and the OWASP API Security Top 10, framed throughout as **recognise → verify →
@@ -187,7 +191,7 @@ prevent** (no offensive step-by-step content):
 
 ---
 
-## ⚙️ Configuration (`.env`)
+## ⚙️ Configuration — models & embeddings from env (`.env`)
 
 The default `.env` runs **fully local via Ollama**. Model names come from env vars, so nothing is hard-coded.
 
